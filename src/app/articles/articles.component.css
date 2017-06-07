@@ -1,0 +1,42 @@
+#prod{
+    margin: 10px 0 0;
+    padding: 0;
+    
+}
+.imagesView{
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+.bigView{
+    display: inline-block;
+    width: 500px;
+    min-height: 500px;
+    position: relative;
+    margin-right: 40px;
+    vertical-align: top;
+    box-sizing: border-box;
+    text-align: center;
+}
+.prodetails{
+    width: 365px;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    background: #f6f6f6;
+    text-align: left;
+    margin-left:60px;
+    padding: 5px;
+    font-size: 12px;
+  
+
+}
+.description{
+    color: #707070;
+    border-top: 1px solid #e6e6e6;
+   
+}
+img:hover {
+  
+}
