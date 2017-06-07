@@ -1,6 +1,9 @@
   
     <h2 style="color:cornflowerblue">
-     CONVERSE Chuck Taylor All Star Ox W  {{ model.nom_model  }}  {{model.id_model}} 
+     CONVERSE Chuck Taylor All Star Ox W  {{articles[0].model.nom_model}} 
+
+
+
 
     
   </h2>
@@ -20,19 +23,22 @@
 
   <div class="prodetails"> 
           <h5>PRIX :</h5>
-          <h3 style="color:crimson">149,95 € {{model.prix_unitaire}}</h3>
+          <h3 style="color:crimson">149,95 € {{articles[0].model.prix_unitaire}}</h3>
           <h5>En stock - Plus que 8 articles disponibles</h5> 
         
-          Couleur :{{model.couleur}}
+          Couleur :{{articles[0].model.couleur}}
           <br>
 
 
 
           Choisissez une taille:
                 <select class="form-control">
+                  <option value="valeur1">42</option>
+                  <option value="valeur1">42</option>
+                  <option value="valeur1">42</option>
                   <option value="valeur1">42</option> 
-                  <option value="valeur2" selected>44</option>
-                  <option value="valeur3">41</option>
+                  <option value="valeur2" >44</option>
+                  <option value="valeur3" selected>41</option>
                   </select>
             <br>
           <a class="btn btn-primary btn-lg btn-block" routerLink="/produits">
@@ -49,21 +55,17 @@
 
 
   <div class="description">
-      <h4>DESCRIPTION :  CONVERSE Chuck Taylor All Star Ox W </h4>
-          <P>   Chaussures Homme Converse - Modèle Basic Basse Toile - Coloris Blanc - 
-                Extérieur en toile - Confort parfait - Semelle extérieure anti-dérapante Extérieur : 
-                 Textile Intérieur : Textile Semelle : Caoutchouc Fermeture : Lacets Conseil :
-                 Ce modèle taille grand, nous vous conseillons de prendre une taille en dessous 
-                 de votre pointure habituelle !
+      <h4>DESCRIPTION : {{articles[0].model.nom_model}} </h4>
+          <p>   {{articles[0].model.description}}</p>  
+    </div>   
 
-               
-          </P>  
-          {{model.description}}
+      <!--<div *ngFor="let t in tableau_tailles" >
+                  <p>"essai"</p>
+      <div>-->
+            <div *ngFor="let item of tableau_tailles" >
+            ESSAU
+                  </div>
+      <p>TEST = {{test}}</p>
+      {{articles[0].model.couleur}}
 
-  </div>
-
-
-
-
-
-</div>
+      </div>

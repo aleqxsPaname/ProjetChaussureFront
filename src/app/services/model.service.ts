@@ -12,6 +12,9 @@ export class ServiceModel {
 
  private _headers = new Headers({'Content-Type': 'application/json'});
 
+private url: string = "http://localhost:8080/boutique/model";
+
+
  constructor(private _http: Http) { }
 
 getTousLesModels(){
@@ -23,4 +26,14 @@ getTousLesModels(){
     }
 
 
+getModelById(id){
+   
+    return this._http.get(this.getModelsUrl(id))
+      .map(res => res.json());
+ }
+
+private getModelsUrl(id){
+    return this.url +"/"+id;
+    
+  }
 }

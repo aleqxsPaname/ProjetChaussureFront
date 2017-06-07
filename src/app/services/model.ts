@@ -7,7 +7,7 @@ description : string;
 couleur :string;
 prix_unitaire:  number;
 modele_image : string ;
-articles : Article[];
+// articles : Article[];
 
 constructor(id_model: number = 0 , nom_model: string ="?", description :string ="?",
  couleur:string ="?", prix_unitaire:number = 0 , model_image:string ="?" ){

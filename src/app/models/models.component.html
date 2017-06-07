@@ -69,9 +69,9 @@
 
     <div class="col-sm-4">
      
- 
+ <!--routerLink="/articles" -->
        <div class="thumbnail"  >
-           <a href="#" routerLink="/articles">
+           <a href="#"    [routerLink]="['/articles', mod.id_model]" >
            <img src="assets/images/{{ mod.model_image }}.png" alt="mod.model_image" style="width:100%">
        
           <div class="hs2">

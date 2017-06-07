@@ -10,8 +10,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent, },
   { path: 'not-found', component: NotFoundComponent },
-  { path: 'articles', pathMatch: 'full', component: ArticlesDetailsComponent },
-   { path: 'models', pathMatch: 'full', component: ModelsComponent },
+ // { path: 'articles', pathMatch: 'full', component: ArticlesDetailsComponent },
+   { path: 'articles/:id', pathMatch: 'full', component: ArticlesDetailsComponent },
+    { path: 'models', pathMatch: 'full', component: ModelsComponent },
   { path: '**', redirectTo: 'not-found' },
 ];
 
