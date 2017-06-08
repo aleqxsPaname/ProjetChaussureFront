@@ -30,7 +30,7 @@ export class  ArticlesDetailsComponent implements OnInit {
                                       .subscribe(
                                           data => {
                                               this.articles = data;
-                                              this.initTableTaille();
+                                              this.initTableTaille(); // VERIFIER SI BONNE PRATIQUE AVEC DIDIER
                                           }
                                       );  
    };
