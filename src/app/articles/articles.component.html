@@ -1,13 +1,8 @@
   
-    <h2 style="color:cornflowerblue">
-     CONVERSE Chuck Taylor All Star Ox W  {{articles[0].model.nom_model}} 
+    <h2 style="color:cornflowerblue">{{articles[0].model.nom_model}}</h2>
 
 
-
-
-    
-  </h2>
-<div class="row" id="prod">
+      <div class="row" id="prod">
   
        <div  class="imagesView thumbnail">
     
@@ -22,24 +17,21 @@
 
 
   <div class="prodetails"> 
-          <h5>PRIX :</h5>
-          <h3 style="color:crimson">149,95 € {{articles[0].model.prix_unitaire}}</h3>
-          <h5>En stock - Plus que 8 articles disponibles</h5> 
-        
-          Couleur :{{articles[0].model.couleur}}
-          <br>
+          <h4>PRIX :
+          <span style="color:crimson">{{articles[0].model.prix_unitaire}} € </span>
+          </h4>
+          <h5>Caracteristiques du produit</h5> 
+          Couleur: {{articles[0].model.couleur}}<br>
+          Description: {{articles[0].model.description}}<br><br>
+
+            <select class="form-control" >
+                  <option value="">CHOISISSEZ VOTRE TAILLE</option>
+                  <option *ngFor="let t_possible of tailles_possible" value="valeur1">
+                        {{t_possible}}  {{comments[t_possible]}}
+                  </option>
+            </select>
 
 
-
-          Choisissez une taille:
-                <select class="form-control">
-                  <option value="valeur1">42</option>
-                  <option value="valeur1">42</option>
-                  <option value="valeur1">42</option>
-                  <option value="valeur1">42</option> 
-                  <option value="valeur2" >44</option>
-                  <option value="valeur3" selected>41</option>
-                  </select>
             <br>
           <a class="btn btn-primary btn-lg btn-block" routerLink="/produits">
                     <span class="glyphicon glyphicon-shopping-cart"></span> AJOUTER AU PANIER
@@ -49,23 +41,6 @@
              <span class="glyphicon glyphicon-ok"></span> EXPÉDIÉ DEMAIN<br>
              <span class="glyphicon glyphicon-ok"></span> 30 JOURS POUR CHANGER D'AVIS
 
-
-
   </div>
 
 
-  <div class="description">
-      <h4>DESCRIPTION : {{articles[0].model.nom_model}} </h4>
-          <p>   {{articles[0].model.description}}</p>  
-    </div>   
-
-      <!--<div *ngFor="let t in tableau_tailles" >
-                  <p>"essai"</p>
-      <div>-->
-            <div *ngFor="let item of tableau_tailles" >
-            ESSAU
-                  </div>
-      <p>TEST = {{test}}</p>
-      {{articles[0].model.couleur}}
-
-      </div>

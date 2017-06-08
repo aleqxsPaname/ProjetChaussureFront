@@ -14,50 +14,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class  ArticlesDetailsComponent implements OnInit {
     
-    
     private articles: Article[];
-    private tableau_tailles = ['12','alex'];
-    private test: string = "avant";
-  //  id: number;
-  //  private sub: any;
+    // private quantityStock = [];
+    private tailles_possible = []; 
+    private comments = [];
 
-   
    constructor(private _articleService: ServiceArticle, private _modelsService: ServiceModel,private _route: ActivatedRoute) {
        
     }
 
-    
-
    public ngOnInit(): void {
-
-
-      this.test = "initinit";
-       
-     //   this.sub = this.route.params.subscribe(params => {
-     //   this.id = +params['id'];
 
       let Id = this._route.snapshot.params['id'] ;                    
       this._articleService.getArticlesByModel(Id)
                                       .subscribe(
                                           data => {
                                               this.articles = data;
+                                              this.initTableTaille();
                                           }
-                                      );
-
-      this.initTableTaille();
+                                      );  
    };
 
-  private initTableTaille(){
-    this.test = "coucou";
+  private initTableTaille(){    
     for(let a of this.articles) {
-         //   if (a.quantite_stock >=1)
-         //   {
-             this.test = this.test + "A";
-              this.tableau_tailles.push(a.taille);
-         //   }
-        }    
-    }   
+            this.tailles_possible.push(a.taille);
+         //   this.quantityStock[a.taille]= a.quantite_stock;
+            if (a.quantite_stock == 0)
+            {
+              this.comments[a.taille] = "Indisponible momentanément";
+            }
+            else if (a.quantite_stock < 3) {
+              this.comments[a.taille] = "Reste " + a.quantite_stock + " article(s) en stock";
+            }
+    } 
+  }   
   
-
 }//FIN
 
