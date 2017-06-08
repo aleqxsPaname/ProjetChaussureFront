@@ -1,6 +1,5 @@
 import { ArticlesDetailsComponent } from './articles/articles.component';
 import { ModelsComponent } from './models/models.component';
-
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule }  from '@angular/router';
 
@@ -13,6 +12,7 @@ const appRoutes: Routes = [
  // { path: 'articles', pathMatch: 'full', component: ArticlesDetailsComponent },
    { path: 'articles/:id', pathMatch: 'full', component: ArticlesDetailsComponent },
     { path: 'models', pathMatch: 'full', component: ModelsComponent },
+   
   { path: '**', redirectTo: 'not-found' },
 ];
 
