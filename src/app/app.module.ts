@@ -18,7 +18,7 @@ import { ArticlesDetailsComponent } from './articles/articles.component';
 import { routing } from './app.routing';
 import { FooterComponent } from './footer/footer.component';
 import { ModelsComponent } from './models/models.component';
-import { PanierComponent } from './panier/panier.component';
+
 
 
 
@@ -28,8 +28,7 @@ import { PanierComponent } from './panier/panier.component';
     AppComponent,NavBarComponent,
     HomeComponent,
     NotFoundComponent,
-    FooterComponent, 
-   
+    FooterComponent,
 ],
   imports: [
     BrowserModule,
@@ -41,11 +40,7 @@ import { PanierComponent } from './panier/panier.component';
 
        ArticlesModule,
        articlesRouting,
-
-
-       
-
-     routing, 
+       routing, 
   
   ],
   providers: [],
