@@ -1,10 +1,11 @@
 
   <div class="row">
-    <h2 style="color:cornflowerblue">{{articles[0].model.nom_model}}</h2>
+    <!--<h2 style="color:cornflowerblue">{{articles[0].model.nom_model}}</h2>-->
 
   
-    <!--<h2 style="color:cornflowerblue"    *ngIf="articles[0]"    >ART0 = {{articles[0].model.nom_model}}</h2>-->
-
+    <!--<h2 style="color:cornflowerblue" >ART0 = {{articles[0].model.nom_model}}</h2>-->
+  
+      <h2 style="color:cornflowerblue" *ngIf="model">{{model.nom_model}}</h2>
 
 
       <div class="row" id="prod">
@@ -17,22 +18,21 @@
     
        </div>-->
         <div class="bigView">
-                 <img  alt="photo_article" src="assets/images/{{ articles[0].model.nom_model }}.jpg">
+                 <img *ngIf="model" alt="photo_article" src="assets/images/{{model.nom_model }}.jpg">
         </div>
 
 
   <div class="prodetails"> 
           <h4>PRIX :
-          <span style="color:crimson">{{articles[0].model.prix_unitaire}} € </span>
+          <span style="color:crimson" *ngIf="model">{{model.prix_unitaire}} € </span>
           </h4>
           
-          <strong>Couleur:</strong> {{articles[0].model.couleur}}<br>
+          <strong>Couleur:</strong><span *ngIf="model">{{model.couleur}}</span><br>
          <br><br>
 
           <select [(ngModel)]="selectedValue" class="form-control" >
                   <option value="0" selected="selected">CHOISISSEZ VOTRE TAILLE</option>
                   <option *ngFor="let t_possible of tailles_possible" value="{{t_possible}}">
-
                         {{t_possible}}  {{comments[t_possible]}}
                   </option>
             </select>
@@ -51,7 +51,7 @@
 
   </div>
  <div>
-       <strong> Description:</strong><br>{{articles[0].model.description}}
+       <strong> Description:</strong><br><span *ngIf="model">{{model.description}}</span>
   </div>
  
  </div>

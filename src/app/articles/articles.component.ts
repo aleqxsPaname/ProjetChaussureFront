@@ -18,12 +18,13 @@ export class  ArticlesDetailsComponent implements OnInit {
     
     private artSelected : ArticleSelected;
     private listeArticleSelected : ArticleSelected[];
-    private articles: Article[]=[];
+    private articles: Article[];
+    private model: Model;
     // private quantityStock = [];
     private tailles_possible = []; 
     private comments = [];
     private compteur : number; 
-    private selectedValue: number;
+    private selectedValue: number = 0;
 
     constructor(private _cartService: CartService, 
                private _articleService: ServiceArticle, 
@@ -50,7 +51,9 @@ export class  ArticlesDetailsComponent implements OnInit {
                                       .subscribe(
                                           data => {
                                               this.articles = data;
-                                              this.initTableTaille(); // VERIFIER SI BONNE PRATIQUE AVEC DIDIER
+                                           //   this.model = data.models[0];
+                                              this.initTableTaille();
+                                              this.creationModelUnique();
                                           }
                                       );  
 
@@ -60,9 +63,20 @@ export class  ArticlesDetailsComponent implements OnInit {
 
 
 
-
+ // cette fonction permet de traiter les tailles et de renseigner le model
   private initTableTaille(){    
     for(let a of this.articles) {
+
+      // Renseigner model
+      this.model = new Model;
+      this.model = a.model;
+      this.model.nom_model = a.model.nom_model;
+      this.model.modele_image = a.model.modele_image;
+      this.model.description = a.model.description;
+       this.model.couleur = a.model.couleur;
+      this.model.prix_unitaire = a.model.prix_unitaire;
+
+
             this.tailles_possible.push(a.taille);
          //   this.quantityStock[a.taille]= a.quantite_stock;
             if (a.quantite_stock == 0)
@@ -75,7 +89,11 @@ export class  ArticlesDetailsComponent implements OnInit {
     } 
   }
 
- ajoutPanier() {
+  private creationModelUnique(){
+      
+  }
+
+  private ajoutPanier() {
 
   this.artSelected = new ArticleSelected;
   this.artSelected.nom_model = this.articles[0].model.nom_model;
