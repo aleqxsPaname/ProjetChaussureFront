@@ -24,6 +24,7 @@ import { ArticlesDetailsComponent } from './articles/articles.component';
 import { routing } from './app.routing';
 import { FooterComponent } from './footer/footer.component';
 import { ModelsComponent } from './models/models.component';
+import { CartModule } from "app/cart/cart.module";
 
 
 
@@ -61,7 +62,7 @@ import { ModelsComponent } from './models/models.component';
 
 
        routing, 
-  
+      CartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

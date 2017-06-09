@@ -8,11 +8,13 @@ import { Routes, RouterModule }  from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CartComponent } from "app/cart/cart.component";
 
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent, },
   { path: 'not-found', component: NotFoundComponent },
  // { path: 'articles', pathMatch: 'full', component: ArticlesDetailsComponent },
+
    { path: 'articles/:id', pathMatch: 'full', component: ArticlesDetailsComponent },
    // { path: 'models', pathMatch: 'full', component: ModelsComponent },
      { path: 'models/:id', pathMatch: 'full', component: ModelsComponent },
@@ -20,7 +22,13 @@ const appRoutes: Routes = [
         { path: 'register', pathMatch: 'full', component: RegisterComponent },
    
    
-        { path: '**', redirectTo: 'not-found' },
+      
+
+ 
+  
+   { path: 'cart', pathMatch: 'full', component: CartComponent },
+   { path: '**', redirectTo: 'not-found' },
+
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

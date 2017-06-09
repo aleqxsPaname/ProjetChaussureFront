@@ -52,7 +52,7 @@
 
 
             <br>
-          <a class="btn btn-primary btn-md btn-block" routerLink="/models">
+          <a class="btn btn-primary btn-md btn-block" routerLink="/articles">
                    Filter
           </a><br>
       
@@ -70,6 +70,7 @@
     <div class="col-sm-4">
      
  <!--routerLink="/articles" -->
+
        <div class="thumbnail img-responsive" alt="image" width="100" height="100"  >
            <a href="#"    [routerLink]="['/articles', mod.id_model]" >
            <img src="assets/images/{{ mod.nom_model }}.jpg" alt="mod.model_image" >
@@ -80,6 +81,7 @@
          
        
           <p style="color:red"> Prix :  {{ mod.prix_unitaire }} (€) </p>
+
            
          </div>
       
