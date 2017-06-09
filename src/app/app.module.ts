@@ -1,3 +1,9 @@
+import { RegisterModule } from './register/register.module';
+import { RegisterComponent } from './register/register.component';
+import { registerRouting } from './register/register.routing';
+import { LoginModule } from './login/login.module';
+import { loginRouting } from './login/login.routing';
+
 
 import { ModelsModule } from './models/models.module';
 import { modelsRouting } from './models/models.routing';
@@ -23,12 +29,14 @@ import { ModelsComponent } from './models/models.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,NavBarComponent,
     HomeComponent,
     NotFoundComponent,
     FooterComponent,
+    
 ],
   imports: [
     BrowserModule,
@@ -38,8 +46,20 @@ import { ModelsComponent } from './models/models.component';
        ModelsModule,
        modelsRouting,
 
+
+
        ArticlesModule,
        articlesRouting,
+
+       LoginModule,
+      loginRouting,
+
+      RegisterModule,
+      registerRouting,
+       
+
+
+
        routing, 
   
   ],

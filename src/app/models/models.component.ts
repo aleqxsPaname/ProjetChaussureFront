@@ -1,7 +1,8 @@
 import { Model } from './../services/model';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { ServiceModel } from './../services/model.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,19 +16,47 @@ export class ModelsComponent implements OnInit {
     
     private models: Model[] = [];
 
-    constructor(private _modelsService: ServiceModel) { }
+    private id :number;
 
-   public ngOnInit(): void {
+    constructor(private _modelsService: ServiceModel,private _route: ActivatedRoute) { }
+
+public ngOnInit(): void {
+    this._route.params.subscribe(p => {  this.init(); console.log("params changed"); });
+    //this.init();
+    console.log("ngOnInit " +  + this.id);
+}
+   public init(): void {
+       this.id = this._route.snapshot.params['id'] ; 
+        console.log("init  " + this.id);
        
-                       this._modelsService.getTousLesModels()
+                     if (this.id==0)  this._modelsService.getTousLesModels()
                                       .subscribe(
                                           data => {
                                               this.models = data;
+                                               console.log(data);
                                           }
                                       );
+                         
+
+else  this.modelpourCategory(this.id);
+
                             }
 
-  
+
+
+                         
+                         modelpourCategory(id)
+                         {
+                          this._modelsService.getTousLesModelsbyCategory(id)
+                                                              .subscribe(
+                                                                  data => {
+                                                                      this.models = data;
+                                                                      console.log(data);
+                                                                  }
+                                                              );
+                                                    }
+                        
+
 
 }//dernier
 

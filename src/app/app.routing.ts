@@ -1,3 +1,6 @@
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+
 import { ArticlesDetailsComponent } from './articles/articles.component';
 import { ModelsComponent } from './models/models.component';
 import { ModuleWithProviders } from '@angular/core';
@@ -11,9 +14,13 @@ const appRoutes: Routes = [
   { path: 'not-found', component: NotFoundComponent },
  // { path: 'articles', pathMatch: 'full', component: ArticlesDetailsComponent },
    { path: 'articles/:id', pathMatch: 'full', component: ArticlesDetailsComponent },
-    { path: 'models', pathMatch: 'full', component: ModelsComponent },
+   // { path: 'models', pathMatch: 'full', component: ModelsComponent },
+     { path: 'models/:id', pathMatch: 'full', component: ModelsComponent },
+       { path: 'login', pathMatch: 'full', component: LoginComponent },
+        { path: 'register', pathMatch: 'full', component: RegisterComponent },
    
-  { path: '**', redirectTo: 'not-found' },
+   
+        { path: '**', redirectTo: 'not-found' },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

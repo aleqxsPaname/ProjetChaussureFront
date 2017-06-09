@@ -1,18 +1,18 @@
-  
+  <div class="row">
     <h2 style="color:cornflowerblue">{{articles[0].model.nom_model}}</h2>
 
 
       <div class="row" id="prod">
   
-       <div  class="imagesView thumbnail">
+       <!--<div  class="imagesView thumbnail">
     
              <img  alt="logo" src="assets/images/1.jpg">
              <img  alt="logo" src="assets/images/2.jpg">
              <img  alt="logo"  src="assets/images/3.jpg">
     
-       </div>
+       </div>-->
         <div class="bigView">
-                  <img  alt="logo" src="assets/images/3.jpg">
+                 <img  alt="photo_article" src="assets/images/{{ articles[0].model.nom_model }}.jpg">
         </div>
 
 
@@ -20,9 +20,9 @@
           <h4>PRIX :
           <span style="color:crimson">{{articles[0].model.prix_unitaire}} € </span>
           </h4>
-          <h5>Caracteristiques du produit</h5> 
-          Couleur: {{articles[0].model.couleur}}<br>
-          Description: {{articles[0].model.description}}<br><br>
+          
+          <strong>Couleur:</strong> {{articles[0].model.couleur}}<br>
+         <br><br>
 
             <select class="form-control" >
                   <option value="">CHOISISSEZ VOTRE TAILLE</option>
@@ -40,7 +40,11 @@
            <br> <span class="glyphicon glyphicon-ok"></span> LIVRAISON GRATUITE<br>
              <span class="glyphicon glyphicon-ok"></span> EXPÉDIÉ DEMAIN<br>
              <span class="glyphicon glyphicon-ok"></span> 30 JOURS POUR CHANGER D'AVIS
-
+  
+ 
   </div>
-
-
+ <div>
+       <strong> Description:</strong><br>{{articles[0].model.description}}
+  </div>
+ 
+ </div>
