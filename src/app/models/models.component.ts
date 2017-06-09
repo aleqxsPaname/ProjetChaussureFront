@@ -17,7 +17,7 @@ export class ModelsComponent implements OnInit {
 
     constructor(private _modelsService: ServiceModel) { }
 
-   public ngOnInit(): void {
+    public ngOnInit(): void {
        
                        this._modelsService.getTousLesModels()
                                       .subscribe(
@@ -25,7 +25,9 @@ export class ModelsComponent implements OnInit {
                                               this.models = data;
                                           }
                                       );
-                            }
+    }
+
+   
 
   
 

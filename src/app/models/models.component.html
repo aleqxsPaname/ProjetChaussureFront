@@ -52,7 +52,7 @@
 
 
             <br>
-          <a class="btn btn-primary btn-md btn-block" routerLink="/models">
+          <a class="btn btn-primary btn-md btn-block" routerLink="/articles">
                    Filter
           </a><br>
       
@@ -71,11 +71,11 @@
      
  <!--routerLink="/articles" -->
        <div class="thumbnail"  >
-           <a href="#"    [routerLink]="['/articles', mod.id_model]" >
+           <a     [routerLink]="['/articles', mod.id_model]" >
            <img src="assets/images/{{ mod.model_image }}.png" alt="mod.model_image" style="width:100%">
        
           <div class="hs2">
-         <p routerLink="/produits"> {{ mod.id_model }}</p>
+         <p routerLink="/articles"> {{ mod.id_model }}</p>
          <p> {{ mod.nom_model }}</p>
           <p>{{ mod.description }}</p>
           <p>{{ mod.couleur }}</p>

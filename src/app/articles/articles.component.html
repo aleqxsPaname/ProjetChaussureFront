@@ -1,5 +1,5 @@
   
-    <h2 style="color:cornflowerblue">{{articles[0].model.nom_model}}</h2>
+    <h2 style="color:cornflowerblue"    *ngIf="articles[0]"    >ART0 = {{articles[0].model.nom_model}}</h2>
 
 
       <div class="row" id="prod">
@@ -23,24 +23,26 @@
           <h5>Caracteristiques du produit</h5> 
           Couleur: {{articles[0].model.couleur}}<br>
           Description: {{articles[0].model.description}}<br><br>
-
-            <select class="form-control" >
-                  <option value="">CHOISISSEZ VOTRE TAILLE</option>
-                  <option *ngFor="let t_possible of tailles_possible" value="valeur1">
+            {{selectedValue}}
+            <select [(ngModel)]="selectedValue" class="form-control" >
+                  <option value="0" selected="selected">CHOISISSEZ VOTRE TAILLE</option>
+                  <option *ngFor="let t_possible of tailles_possible" value="{{t_possible}}">
                         {{t_possible}}  {{comments[t_possible]}}
                   </option>
             </select>
 
 
             <br>
-          <a class="btn btn-primary btn-lg btn-block" routerLink="/produits">
+      
+         <!--<a class="btn btn-primary btn-lg btn-block" (click)="ajoutPanier()">-->
+          <a class="btn btn-primary btn-lg btn-block" routerLink="/cart" (click)="ajoutPanier()">
                     <span class="glyphicon glyphicon-shopping-cart"></span> AJOUTER AU PANIER
           </a>
 
            <br> <span class="glyphicon glyphicon-ok"></span> LIVRAISON GRATUITE<br>
              <span class="glyphicon glyphicon-ok"></span> EXPÉDIÉ DEMAIN<br>
              <span class="glyphicon glyphicon-ok"></span> 30 JOURS POUR CHANGER D'AVIS
-
+            
   </div>
 
 
