@@ -2,6 +2,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../services/authentication.service';
+import { ServiceModel } from "app/services/model.service";
+import { Client } from "app/services/client";
 
 @Component({
     moduleId: module.id.toString(),
@@ -9,34 +11,37 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 
 export class LoginComponent implements OnInit {
-    model: any = {};
-    loading = false;
-    returnUrl: string;
+    client : Client;
+      message : string ="";
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-       ) { }
+    constructor(private _authenticationService : AuthenticationService, private _router: Router,private _modelService : ServiceModel){
 
-    ngOnInit() {
-        // reset login status
-        this.authenticationService.logout();
-
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
-    login() {
-        this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                   
-                    this.loading = false;
-                });
+    ngOnInit(): void { 
+      this.client = new Client();
+       this._authenticationService.logout();
+     
     }
+
+    onConnect(): void {
+  
+      this._authenticationService.authentification(this.client).subscribe(
+      clientConnecte => { 
+        if(clientConnecte){
+        
+          localStorage.setItem("Connecté(e)",JSON.stringify(clientConnecte));
+          
+        
+        
+          let link = ['/cart'];
+          this._router.navigate( link );
+         
+         
+        }},
+        e => { console.log(e.message); 
+          this.message="Votre Email ou mot de passe incorrecte!!";
+      }
+    )
+      }
 }
