@@ -30,7 +30,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<div class="row"   *ngFor="let item of listeArticleSelected">
+					<div class="row"   *ngFor="let item of panier">
 
           
 						<div class="col-xs-2"><img class="img-responsive" src="assets/images/{{ item.nom_model }}.jpg">
@@ -48,10 +48,10 @@
 							</div>
 							
 							<div class="col-xs-2">
-								<input type="text" class="form-control input-sm" value="1">
+								<input type="text" class="form-control input-sm" value="{{item.quantity}}">
 							</div>
 							<div class="col-xs-2">
-							<h6><strong> {{ item.prix }} <span class="text-muted"></span></strong></h6>
+							<h6><strong> {{ item.taille }} <span class="text-muted"></span></strong></h6>
 						   </div>
 							<div class="col-xs-2">
 								<button type="button" class="btn btn-danger btn-md" (click)="removeItem(item)">
