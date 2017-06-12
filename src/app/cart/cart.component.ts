@@ -48,6 +48,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     let index: number = this.listeArticleSelected.indexOf(item);
     if (index !== -1) {
         this.listeArticleSelected.splice(index,1);
+        this._cartService.articleSelectedSubject.next(this.listeArticleSelected);
     }  
     this._cartService.compteurSubject.next(this.compteur - 1);
     this.total = this.calculTotal();

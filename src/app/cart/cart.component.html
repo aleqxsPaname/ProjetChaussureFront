@@ -9,7 +9,7 @@
         (id du model: {{ item.id_article }} )
   <button (click)="removeItem(item)">REMOVE</button>    
 </p>
-<p>TOTAL = {{total}} €</p>
+<p>MONTANT TOTAL DE VOTRE PANIER:  {{total | currency:'EUR':true:'1.2-2'}}</p>
 <button (click)="viderPanier()">VIDER LE PANIER</button>  
 <br>-->
 
