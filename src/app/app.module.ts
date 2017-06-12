@@ -1,3 +1,5 @@
+//import { SearchModule } from './search/search.module';
+//import { searchRouting } from './search/search.routing';
 import { RegisterModule } from './register/register.module';
 import { RegisterComponent } from './register/register.component';
 import { registerRouting } from './register/register.routing';
@@ -27,6 +29,11 @@ import { ModelsComponent } from './models/models.component';
 import { CartModule } from "app/cart/cart.module";
 
 
+// tslint:disable-next-line:whitespace
+import { CollapseModule } from 'ngx-bootstrap';
+import { SearchComponent } from './search/search.component';
+
+
 
 
 
@@ -34,15 +41,17 @@ import { CartModule } from "app/cart/cart.module";
 @NgModule({
   declarations: [
     AppComponent,NavBarComponent,
-    HomeComponent,
+   HomeComponent,
     NotFoundComponent,
     FooterComponent,
-    
+  
 ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+
+    CollapseModule,
 
        ModelsModule,
        modelsRouting,
@@ -57,7 +66,8 @@ import { CartModule } from "app/cart/cart.module";
 
       RegisterModule,
       registerRouting,
-       
+
+     
 
 
 

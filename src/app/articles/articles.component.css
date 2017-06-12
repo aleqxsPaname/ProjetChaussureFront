@@ -1,13 +1,10 @@
-#prod{
-    margin: 10px 0 0;
-    padding: 0;
-    
-}
+
 .imagesView{
-    width: 100px;
+    width: 100%;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: center;
     box-sizing: border-box;
+    padding-left:30px;
 }
 .bigView{
     display: inline-block;
@@ -37,6 +34,18 @@
     border-top: 1px solid #e6e6e6;
    
 }
-img:hover {
+
+.prodecart{
+    width: 100%;
+    min-height: 420px;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    background: #f6f6f6;
+    text-align: left;
+    margin-left:0px;
+    padding: 30px;
+    font-size: 12px;
   
+
 }

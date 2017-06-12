@@ -1,43 +1,57 @@
-
-
-
-<nav class="navbar navbar-default">
-  
-  <div class="container-fluid">
-    
-    <div class="navbar-header">
-      
-      
-        <a class="navbar-brand" href="#" routerLink="/models/0">  
-         <!--<img  alt="logo" class="col-md-4" src="assets/images/fitec_logo.png">-->
-         <span class=" glyphicon glyphicon-home"></span> 
-        
-       </a>
-
+ 
      
     
-        <ul class="nav navbar-nav navbar-right">
-          
-          <!--<li class="nav-item active"><a class="nav-link" routerLink="/models/0" routerLinkActive="active">Acceuil</a></li>-->
-          <li class="nav-item"><a class="nav-link" routerLink="/models/1" routerLinkActive="active" >Hommes</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/models/2" routerLinkActive="active">Femmes</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/models/3" routerLinkActive="active">Kids</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/models/4" routerLinkActive="active">NEW</a></li>
-          <!--<li class="nav-item"><a class="nav-link" routerLink="/register" routerLinkActive="active">Inscription</a></li>-->
-          <li class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active">Connexion</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/cart" routerLinkActive="active"><span class=" glyphicon glyphicon-shopping-cart"></span>  {{compteur}}</a></li>
 
+
+   <nav class="navbar navbar-default">
+      <div class="container">
+     
+        <div class="navbar-header">
+       
+          <button type="button" class="navbar-toggle collapsed" (click)="isCollapsed = !isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+
+
+            
+          </button>
+         
+            <a class="navbar-brand" href="#" routerLink="/models/0"> 
+             <!--  <img  alt="logo" class="col-md-4" src="assets/images/fitec_logo.png">-->
+            <span class=" glyphicon glyphicon-home"></span> 
+        
+            </a>
+        </div>
     
-        </ul>
-    </div> 
+      
 
-  </div>
-  
-</nav>
+        <div class="collapse navbar-collapse" [collapse]="isCollapsed">
+          <ul class="nav navbar-nav navbar-right">
+            
+             <li class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active">Connexion</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="/cart" routerLinkActive="active"  class="btn btn-danger btn-sm">
+               <span class="glyphicon glyphicon-shopping-cart"></span>
+              {{compteur}}</a></li>
+
+          </ul>
+           <ul class="nav navbar-nav navbar-left">
+             <li class="nav-item"><a class="nav-link" routerLink="/models/1" routerLinkActive="active" >Hommes</a></li>
+
+           <li class="nav-item"><a class="nav-link" routerLink="/models/2" routerLinkActive="active">Femmes</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/models/3" routerLinkActive="active">Kids</a></li>
+
+             <li class="nav-item"><a class="nav-link" routerLink="/models/4" routerLinkActive="active">Nouveauté</a></li>
+            
 
 
-<!-- 
-  <li class="nav-item"><a class="nav-link" routerLink="/nouveaute" routerLinkActive="active">Nouveauté</a></li>
-             <li class="nav-item"><a class="nav-link" routerLink="/promotion" routerLinkActive="active">Promotion</a></li>
-             <li class="nav-item"><a class="nav-link" routerLink="/auteurs" routerLinkActive="active">Auteurs</a></li>
-  -->
+          </ul>
+          
+          
+        </div>
+      </div>
+    </nav>
+    
+
+
