@@ -8,7 +8,7 @@ export class CartService {
 
     public panier: ArticleSelected[] = [];              
 
-    public articleSelectedSubject :BehaviorSubject<ArticleSelected[]>
+    public panierSubject :BehaviorSubject<ArticleSelected[]>
               = new BehaviorSubject([]);
 
     public compteurSubject :BehaviorSubject<number>
@@ -41,9 +41,9 @@ export class CartService {
             localStorage.setItem("panier",JSON.stringify(t));
         }*/
         if(contenu_panier_storage){
-             this.articleSelectedSubject.next(JSON.parse(localStorage.getItem("panier")));
+             this.panierSubject.next(JSON.parse(localStorage.getItem("panier")));
         }
-        this.articleSelectedSubject.subscribe(b=>localStorage.setItem("panier",JSON.stringify(b)));
+        this.panierSubject.subscribe(b=>localStorage.setItem("panier",JSON.stringify(b)));
     }   
 }
 

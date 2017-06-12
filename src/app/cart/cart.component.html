@@ -2,10 +2,11 @@
 
 <p>cart works!</p>
  
- <p *ngFor="let item of listeArticleSelected">X
+ <p *ngFor="let item of panier">X
         {{ item.nom_model }} /
         taille: {{ item.taille }}  /
         prix unitaire: {{ item.prix }} € /
+        quantité: {{ item.quantity }} /
         (id du model: {{ item.id_article }} )
   <button (click)="removeItem(item)">REMOVE</button>    
 </p>

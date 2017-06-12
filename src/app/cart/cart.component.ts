@@ -14,14 +14,14 @@ export class CartComponent implements OnInit, AfterViewInit {
   public compteur : number;
   public total: number = 0;
   public articleSelected : ArticleSelected;
-  public listeArticleSelected : ArticleSelected[];
+  public panier : ArticleSelected[];
   constructor(private _cartService : CartService) {
 
      this._cartService.compteurSubject.subscribe(
           cpt => this.compteur = cpt);
 
-     this._cartService.articleSelectedSubject.subscribe(
-           articleSelectedSubject => this.listeArticleSelected=articleSelectedSubject);   
+     this._cartService.panierSubject.subscribe(
+           panierSubject => this.panier=panierSubject);   
 
   }
 
@@ -36,26 +36,27 @@ export class CartComponent implements OnInit, AfterViewInit {
   calculTotal() :number {
         let t = 0;
         let article : ArticleSelected;
-        console.log("LISTEARTICLESELECTED="+this.listeArticleSelected);
-        for(article of this.listeArticleSelected){
+        for(article of this.panier){
             console.log("PRIX=" + article.prix);
-            t = t + article.prix;
+            t = t + article.prix * article.quantity;
         }
         return t;
     }
 
   removeItem(item: ArticleSelected){
-    let index: number = this.listeArticleSelected.indexOf(item);
-    if (index !== -1) {
-        this.listeArticleSelected.splice(index,1);
-        this._cartService.articleSelectedSubject.next(this.listeArticleSelected);
+    let index: number = this.panier.indexOf(item);
+    if (index !== -1) { // on verifie que l'article est bien dans le panier
+        if (this.panier[index].quantity == 1) {
+        this.panier.splice(index,1);
+        this._cartService.panierSubject.next(this.panier);
+        } else {this.panier[index].quantity --;}
     }  
     this._cartService.compteurSubject.next(this.compteur - 1);
     this.total = this.calculTotal();
   }
 
   viderPanier() {
-    this._cartService.articleSelectedSubject.next([]);
+    this._cartService.panierSubject.next([]);
     this._cartService.compteurSubject.next(0);
     this.total = 0;
   }

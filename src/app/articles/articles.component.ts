@@ -17,7 +17,7 @@ import { ArticleSelected } from "app/services/articleSelected";
 export class  ArticlesDetailsComponent implements OnInit {
     
     private artSelected : ArticleSelected;
-    private listeArticleSelected : ArticleSelected[];
+    private panier : ArticleSelected[];
     private articles: Article[];
     private model: Model;
     // private quantityStock = [];
@@ -25,14 +25,15 @@ export class  ArticlesDetailsComponent implements OnInit {
     private comments = [];
     private compteur : number; 
     private selectedValue: number = 0;
+    private alerting: string[] = [];
 
-    constructor(private _cartService: CartService, 
+    constructor(private _cartService: CartService, // subject
                private _articleService: ServiceArticle, 
                private _modelsService: ServiceModel,
                private _route: ActivatedRoute) {
 
-         this._cartService.articleSelectedSubject.subscribe(
-           articleSelectedSubject => this.listeArticleSelected=articleSelectedSubject);  
+         this._cartService.panierSubject.subscribe(
+           panierSubject => this.panier=panierSubject);  
 
          this._cartService.compteurSubject.subscribe(
            compteurSubject => this.compteur = compteurSubject);  
@@ -41,24 +42,16 @@ export class  ArticlesDetailsComponent implements OnInit {
 
    public ngOnInit(): void {
 
-   
-    // localStorage.removeItem("compteur");
-
-
 
       let Id = this._route.snapshot.params['id'] ;                    
       this._articleService.getArticlesByModel(Id)
                                       .subscribe(
                                           data => {
                                               this.articles = data;
-                                           //   this.model = data.models[0];
                                               this.initTableTaille();
-                                              this.creationModelUnique();
+                                              this.modelInPanier();
                                           }
                                       );  
-
-
-
    };
 
 
@@ -67,15 +60,7 @@ export class  ArticlesDetailsComponent implements OnInit {
   private initTableTaille(){    
     for(let a of this.articles) {
 
-      // Renseigner model
-      this.model = new Model;
       this.model = a.model;
-      this.model.nom_model = a.model.nom_model;
-      this.model.modele_image = a.model.modele_image;
-      this.model.description = a.model.description;
-       this.model.couleur = a.model.couleur;
-      this.model.prix_unitaire = a.model.prix_unitaire;
-
 
             this.tailles_possible.push(a.taille);
          //   this.quantityStock[a.taille]= a.quantite_stock;
@@ -89,24 +74,48 @@ export class  ArticlesDetailsComponent implements OnInit {
     } 
   }
 
-  private creationModelUnique(){
-      
-  }
 
   private ajoutPanier() {
-
-  this.artSelected = new ArticleSelected;
-  this.artSelected.nom_model = this.articles[0].model.nom_model;
-  this.artSelected.prix = this.articles[0].model.prix_unitaire;
-  this.artSelected.id_article = this.articles[0].model.id_model;
-  this.artSelected.taille = this.selectedValue;
-  this.listeArticleSelected.push(this.artSelected);
-  this._cartService.articleSelectedSubject.next(this.listeArticleSelected);
-    
-  this._cartService.compteurSubject.next(this.compteur + 1);
- 
+      
+      let quantite = 0;
+      let index = 0;
+      let panier = JSON.parse(localStorage.getItem("panier"));
+      if (panier){
+        for (let lignepanier of panier){ // si l'article est deja dans le panier alors il faut changer la quantité...(1)
+            if (this.model.nom_model == lignepanier.nom_model && this.selectedValue == lignepanier.taille){
+              quantite = lignepanier.quantity + 1;
+              this.panier[index].quantity = quantite; // est ce que cela modifie l'objet ds le panier?
+            }
+        index++;
+        }
+      }
+      if (quantite ==0) { 
+             // (1)...sinon il faut ajouter l'article
+            this.artSelected = new ArticleSelected;
+            this.artSelected.nom_model = this.model.nom_model;
+            this.artSelected.prix = this.model.prix_unitaire;
+            this.artSelected.id_article = this.model.id_model;
+            this.artSelected.taille = this.selectedValue;
+            this.artSelected.quantity = 1;
+            this.panier.push(this.artSelected);
+      }
+      this._cartService.panierSubject.next(this.panier);
+      this._cartService.compteurSubject.next(this.compteur + 1);
  }
 
+    modelInPanier(){
+        this.panier = JSON.parse(localStorage.getItem("panier"));
+        for (let articlePanier of this.panier) {            
+                    if (this.model.nom_model == articlePanier.nom_model)
+                    {  
+                        let v = "(" + articlePanier.taille + ")";
+                        let n = this.model.nom_model;
+                        if (!this.alerting[n]) {
+                            this.alerting[n] = v;
+                        } else this.alerting[n] = this.alerting[n] + v
+                    }
+        }                           
+    }              
   
 }//FIN
 
