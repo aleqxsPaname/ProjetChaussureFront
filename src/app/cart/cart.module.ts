@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { ServiceArticle } from './../services/article.service';
 import { CartComponent } from "app/cart/cart.component";
 import { CartService } from "app/services/cart.service";
+import { CommandeService } from "app/services/commande.service";
 
 
 
@@ -19,7 +20,7 @@ import { CartService } from "app/services/cart.service";
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpModule,
+    HttpModule
   
     
   ],
@@ -31,7 +32,8 @@ import { CartService } from "app/services/cart.service";
     CartComponent
   ],
   providers: [
-     CartService
+     CartService,
+     CommandeService
   ],
   
 })

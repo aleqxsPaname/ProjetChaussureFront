@@ -26,6 +26,29 @@ SET time_zone = "+00:00";
 -- Structure de la table `admin`
 --
 
+DROP TABLE IF EXISTS `role`;
+DROP TABLE IF EXISTS `admin`;
+
+DROP TABLE IF EXISTS `ligne_de_commande`;
+DROP TABLE IF EXISTS `commande`;
+DROP TABLE IF EXISTS `client`;
+
+
+DROP TABLE IF EXISTS `photo`;
+DROP TABLE IF EXISTS `model_categorie`;
+DROP TABLE IF EXISTS `article`;
+DROP TABLE IF EXISTS `model`;
+DROP TABLE IF EXISTS `categorie`;
+
+
+
+
+
+
+
+
+
+
 CREATE TABLE `admin` (
   `id_admin` bigint(20) NOT NULL,
   `email_admin` varchar(255) DEFAULT NULL,
@@ -194,8 +217,8 @@ CREATE TABLE `ligne_de_commande` (
 --
 
 INSERT INTO `ligne_de_commande` (`id_ligne_cmde`, `quantite`, `id_article`, `id_commande`) VALUES
-(1, 2, 1, NULL),
-(2, 6, 2, NULL);
+(1, 2, 1, 1),
+(2, 6, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -444,7 +467,7 @@ ALTER TABLE `commande`
 ALTER TABLE `ligne_de_commande`
   ADD CONSTRAINT `FK_5dnng15drgn6uetayp4gw2f4b` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`),
   ADD CONSTRAINT `FK_awxpn24n2gpdyuxlqmwp1vejb` FOREIGN KEY (`id_article`) REFERENCES `article` (`id_article`),
-  ADD CONSTRAINT `FK_rvl6yam6anr8tkldpxsvuq6sh` FOREIGN KEY (`id_ligne_cmde`) REFERENCES `commande` (`id_commande`);
+  -- ADD CONSTRAINT `FK_rvl6yam6anr8tkldpxsvuq6sh` FOREIGN KEY (`id_ligne_cmde`) REFERENCES `commande` (`id_commande`);
 
 --
 -- Contraintes pour la table `model_categorie`

@@ -50,9 +50,7 @@ import { SearchComponent } from './search/search.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-
     CollapseModule,
-
        ModelsModule,
        modelsRouting,
 

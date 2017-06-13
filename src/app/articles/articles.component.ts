@@ -83,8 +83,8 @@ export class  ArticlesDetailsComponent implements OnInit {
       if (panier){
         for (let lignepanier of panier){ // si l'article est deja dans le panier alors il faut changer la quantité...(1)
             if (this.model.nom_model == lignepanier.nom_model && this.selectedValue == lignepanier.taille){
-              quantite = lignepanier.quantity + 1;
-              this.panier[index].quantity = quantite; // est ce que cela modifie l'objet ds le panier?
+              quantite = lignepanier.quantite + 1;
+              this.panier[index].quantite = quantite; // est ce que cela modifie l'objet ds le panier?
             }
         index++;
         }
@@ -94,9 +94,9 @@ export class  ArticlesDetailsComponent implements OnInit {
             this.artSelected = new ArticleSelected;
             this.artSelected.nom_model = this.model.nom_model;
             this.artSelected.prix = this.model.prix_unitaire;
-            this.artSelected.id_article = this.model.id_model;
+            this.artSelected.idArticle = this.model.id_model;
             this.artSelected.taille = this.selectedValue;
-            this.artSelected.quantity = 1;
+            this.artSelected.quantite = 1;
             this.panier.push(this.artSelected);
       }
       this._cartService.panierSubject.next(this.panier);
