@@ -14,21 +14,32 @@ export class AuthenticationService {
    
    } 
 
-    public inscription (client : Client) : Observable<Client> {
+    // public inscription (client : Client) : Observable<Client> {
         
-        let urlWs : string = "http://localhost:8080/boutique/client/new";
+    //     let url : string = "http://localhost:8080/boutique/client/new";
         
-        return this._http.post(urlWs, JSON.stringify(client), {headers: this._headers}).map(response => response.json())
-                        .catch(e => Observable.throw('error: '+ e));  
-    }
+    //     return this._http.post(url, JSON.stringify(client), {headers: this._headers}).map(response => response.json())
+    //                     .catch(e => Observable.throw('error: '+ e));  
+    // }
+
+     public inscription (client : Client) : Observable<Client> {
+        
+         let url : string = "http://localhost:8080/boutique/client/new";
+        
+         return this._http.post(url, JSON.stringify(client), {headers: this._headers}).map(response => response.json())
+                         .catch(e => Observable.throw('error: '+ e));  
+     }
+
 
 
     public authentification (client : Client) : Observable<Client> {
         
-        let urlWs : string = "http://localhost:8080/boutique/clients/login/"+client.email+"/"+client.mdp;
+        let urlWs : string = "http://localhost:8080/boutique/clients/login/"+ client.email + "/"+client.mdp ;
          return this._http.get(urlWs).map(response=> response.json()).catch(e=> Observable.throw('error: '+e));  
-    }
 
+        
+    }
+ 
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('clientConnecte');

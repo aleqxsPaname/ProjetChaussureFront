@@ -25,7 +25,7 @@ export class RegisterComponent {
 
     onSubmit(): void {
        this._authenticationService.inscription(this.client).subscribe(
-        usr => {this._router.navigate(['/models']);  },
+        usr => {this._router.navigate(['models/0']);  },
                  e => { console.log(e.message); 
                  this.message = "Ko"
                  });
