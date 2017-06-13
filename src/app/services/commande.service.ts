@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
-import { User } from './user';
+
 import { Commande } from "app/services/commande";
 import { Observable } from "rxjs/Observable";
 
