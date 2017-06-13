@@ -1,7 +1,9 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Client } from "app/services/client";
+import { AuthenticationService } from "app/services/authentication.service";
 
-import { UserService } from '../services/user.service';
+
 
 @Component({
     moduleId: module.id.toString(),
@@ -9,25 +11,23 @@ import { UserService } from '../services/user.service';
 })
 
 export class RegisterComponent {
-    model: any = {};
-    loading = false;
+    client : Client;
+    message : String ="";
 
-    constructor(
-        private router: Router,
-        private userService: UserService,
-        ) { }
+    constructor(private _authenticationService : AuthenticationService, private _router: Router){
 
-    register() {
-        this.loading = true;
-        this.userService.create(this.model)
-            .subscribe(
-                data => {
-                 
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                  
-                    this.loading = false;
-                });
     }
+
+    ngOnInit(): void { 
+      this.client = new Client();
+      //this.errorMsg = "";
+    }
+
+    onSubmit(): void {
+       this._authenticationService.inscription(this.client).subscribe(
+        usr => {this._router.navigate(['models/0']);  },
+                 e => { console.log(e.message); 
+                 this.message = "Ko"
+                 });
+     }
 }

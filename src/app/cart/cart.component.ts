@@ -64,6 +64,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     this._cartService.compteurSubject.next(0);
     this.total = 0;
   }
+  
 
   addCommande() {
     this.commande = new Commande();
