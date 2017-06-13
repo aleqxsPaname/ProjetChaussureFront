@@ -13,7 +13,9 @@
                                                                 
                                     <form>
                                         <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search">
+
+                    <input #listFilter (keyup)="0" type="text" class="form-control" placeholder="Search">
+
                                         <div class="input-group-btn">
                                             <button class="btn btn-default" type="submit">
                                             <i class="glyphicon glyphicon-search"></i>
@@ -24,16 +26,16 @@
                                    
                                     <br>
                                     Couleur :<select class="form-control">
-                                            <option value="valeur1">red</option> 
-                                            <option value="valeur2" selected>green</option>
-                                            <option value="valeur3">blue</option>
+                                            <option value="valeur1">Rouge</option> 
+                                            <option value="valeur2">Blanc</option>
+                                            <option value="valeur3">Vert</option>
                                             </select><br>
                                     <br>
-                                    Choisissez une taille:
+                                    Marque:
                                             <select class="form-control">
-                                            <option value="valeur1">42</option> 
-                                            <option value="valeur2" selected>44</option>
-                                            <option value="valeur3">41</option>
+                                            <option value="valeur1">Adidas</option> 
+                                            <option value="valeur2">Nike</option>
+                                            <option value="valeur3">Conversse</option>
                                             </select>
 
                                      <!--<br>
@@ -63,19 +65,15 @@
                 <p>
                       Total <b>{{ models.length }} </b> Models.
                 </p> 
-			<div *ngFor="let mod of models">
+			<div *ngFor="let mod of  ( models | categorieFilter : listFilter.value)">
                    
 						<div class="col-md-4">
 							
 							<div class="thumbnail">
-                               
-
-								<a href="#"    [routerLink]="['/articles', mod.id_model]" >
+                       		<a href="#"    [routerLink]="['/articles', mod.id_model]" >
                                      <img src="assets/images/{{ mod.nom_model }}.jpg" alt="mod.model_image" class="img-responsive">
                                 </a>
-                            
-								
-							  
+                		  
                                 <div class="producttitle"> {{ mod.nom_model }}</div>
                                     
         <div class="productprice"><div class="pull-right"><a class="btn btn-danger btn-md"  [routerLink]="['/articles', mod.id_model]" ><span class="glyphicon glyphicon-shopping-cart"></span><span >{{alerting[mod.nom_model]}}</span></a></div>

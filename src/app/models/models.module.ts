@@ -10,6 +10,7 @@ import { ServiceModel } from './../services/model.service';
 
 
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { FilterPipe } from './models.pipe';
 
 
 @NgModule({
@@ -20,11 +21,13 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     RouterModule,
     HttpModule,
     PaginationModule.forRoot()
+  
+
     
   ],
   declarations: [
     ModelsComponent,
-   
+     FilterPipe
 ],
   exports: [
     ModelsComponent
